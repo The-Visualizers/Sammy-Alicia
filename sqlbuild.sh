@@ -1,0 +1,1 @@
+podman run -p 3306:3306 -e 'MYSQL_DATABASE=mydatabase' -e 'MYSQL_PASSWORD=secret' -e 'MYSQL_ROOT_PASSWORD=verysecret' -e 'MYSQL_USER=myuser' mysql:latest
