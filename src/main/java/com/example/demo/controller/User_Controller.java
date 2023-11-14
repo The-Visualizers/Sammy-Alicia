@@ -9,20 +9,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.User;
-import com.example.demo.repository.UserRepository;
-import com.example.demo.services.UserService;
+import com.example.demo.repository.User_Repository;
+import com.example.demo.services.UserServices;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-public class UserController {
-    private UserService userService;
-    private UserRepository UserRepository;
+public class User_Controller {
+    private UserServices userService;
+    private User_Repository UserRepository;
     @GetMapping("/all")
     public java.util.List<User> getAllUsers() {
         return UserRepository.findAll();
-        
     }
     @PostMapping("/newuser")
     public String createNewUser(@RequestBody User newUser){
@@ -33,7 +32,7 @@ public class UserController {
     public String updateUserName(@PathVariable Long id, @RequestBody String newName) {
     return userService.updateUserName(id, newName);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/user/{id}")
     public String deleteUser(@PathVariable Long id) {
         return userService.deleteUser(id);
     }

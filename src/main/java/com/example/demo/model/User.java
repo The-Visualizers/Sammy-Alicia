@@ -19,13 +19,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    
     @Column(nullable=false)
     private String name;
-    
     @Column(unique = true)
     private String phoneNumber;
-    
     @Column(unique = true)
     private String email;
 }

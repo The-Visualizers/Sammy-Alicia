@@ -5,14 +5,14 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.User;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.User_Repository;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @Service
-public class UserService {
-private final UserRepository userRepository;
+public class UserServices {
+private final User_Repository userRepository;
 
 public String updateUserName(Long id, String newName) {
     Optional<User> userOptional = userRepository.findById(id);
