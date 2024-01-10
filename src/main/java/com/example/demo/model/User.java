@@ -1,4 +1,6 @@
 package com.example.demo.model;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,15 +16,44 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name = "users")
+@Table(name = "USERS")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-    @Column(nullable=false)
-    private String name;
-    @Column(unique = true)
-    private String phoneNumber;
+    private Integer id_user;
+   
     @Column(unique = true)
     private String email;
+    
+    @Column(nullable=false)
+    private String username;
+
+    @Column(unique = true)
+    private String password;
+    @Entity
+    public class Cart {
+    
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private int cart;
+
+        private Date CreatedDate;
+
+        private int userId;
+        
+        public Cart (Date CreatedDate, int id){
+            this.CreatedDate = CreatedDate;
+            this.userId = id;
+        }
+
+        public Date getCreatedDate() {
+            return this.CreatedDate;
+        }
+        public int getId(){
+            return this.userId;
+        }
+
+    }
+
+    
 }

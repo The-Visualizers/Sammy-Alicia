@@ -1,8 +1,5 @@
 package com.example.demo.model;
 
-import java.math.BigDecimal;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,26 +11,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name ="products")
+@Table(name ="PRODUCT")
 
 public class ProductTable {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(unique = true)
+    //here we need to make the join with the Cart itself
+    private Long id_product;
+    
     private String name;
-    private BigDecimal price;
-    private Boolean instock;
-    @Column(unique = true)
-    private String description;
-    private String photo;
-    private String reviews;
 
+    private String image;
+
+    private Integer price;
+
+    private boolean instock;
+    
+    private String description;
 }
 
          
