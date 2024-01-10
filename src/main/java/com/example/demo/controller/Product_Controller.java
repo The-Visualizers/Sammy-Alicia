@@ -12,25 +12,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.ProductTable;
 import com.example.demo.services.ProductServices;
+
+import lombok.AllArgsConstructor;
+@AllArgsConstructor
 @RestController
 public class Product_Controller {
-
+     //You need a status report before the bulk of the method code 
     private final ProductServices productService;
 
-    public Product_Controller(ProductServices productService) {
-        this.productService = productService;
-    }
-
     @GetMapping("/search")
+    //You need status report of a 200 here for automation
     public ResponseEntity<Object> searchProducts(@RequestParam("query") String query, @RequestParam("id") Long id ) {
-        return ResponseEntity.ok(productService.findproductByIdOrNameContaining(query, id));
+        return ResponseEntity.ok(productService.findProductByIdOrName(query, id));
     }
 
-    @PostMapping("/newproduct")
+    @PostMapping("/create")
+    //You need status report of a 200 here for automation with a creation message
     public ProductTable createProduct(@RequestBody ProductTable product) {
         return productService.createProduct(product);
     }
-    @PatchMapping("/{id}")
+    @PatchMapping("/update/{id}")
+    ////You need status report of a 200 here for automation with a update message
     public ResponseEntity<ProductTable> updateProduct(
     @PathVariable Long id,
     @RequestBody ProductTable updatedProduct) {
@@ -51,7 +53,8 @@ public class Product_Controller {
     return ResponseEntity.ok(savedProduct);
     }
 
-    @DeleteMapping("/product/{id}")
+    @DeleteMapping("/delete/{id}")
+    ////You need status report of a 200 here for automation that shows that
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         boolean deleted = productService.deleteProduct(id);
         if (deleted) {

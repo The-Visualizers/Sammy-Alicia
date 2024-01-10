@@ -14,11 +14,17 @@ import lombok.AllArgsConstructor;
 public class UserServices {
 private final User_Repository userRepository;
 
+
+// creating a new user you are creating a cart with it(crreating a new)
+// call an interation for the the cartitems
+// calling the cart table 
+// pass the userid to the function of the initial cart
+
 public String updateUserName(Long id, String newName) {
     Optional<User> userOptional = userRepository.findById(id);
     if (userOptional.isPresent()) {
         User user = userOptional.get();
-        user.setName(newName);
+        user.setUsername(newName);
         userRepository.save(user);
         return "User's name updated successfully!";
     } else {
