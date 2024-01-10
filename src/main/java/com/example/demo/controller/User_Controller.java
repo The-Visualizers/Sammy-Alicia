@@ -1,5 +1,4 @@
 package com.example.demo.controller;
-
 import java.util.Date;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Cart;
 import com.example.demo.model.User;
+import com.example.demo.model.User.Cart;
 import com.example.demo.repository.CartRepository;
 import com.example.demo.repository.User_Repository;
 import com.example.demo.services.UserServices;
@@ -21,6 +20,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RestController
 public class User_Controller {
+    
     private CartRepository cartRepository;
     private UserServices userService;
     private User_Repository UserRepository;
@@ -33,10 +33,10 @@ public class User_Controller {
         
         User user = UserRepository.save(newUser); // in user
         Date date = new Date();
-        Cart cart = new Cart(date, user.getUser_id());
+        Cart cart = user.new Cart(date, user.getId_user());
         cartRepository.save(cart);
-        return "New User Created!";
-        //pass the user id to the creation function
+        return "New User Created with Cart!";
+        //pass the user id to return "New User Created with Cart!";e creation function
     }
     @PatchMapping("/name/{id}")
     public String updateUserName(@PathVariable Long id, @RequestBody String newName) {
@@ -46,4 +46,5 @@ public class User_Controller {
     public String deleteUser(@PathVariable Long id) {
         return userService.deleteUser(id);
     }
+
 }
