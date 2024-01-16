@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,7 @@ import com.example.demo.services.ProductServices;
 import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RestController
+@RequestMapping("product")
 public class Product_Controller {
      //You need a status report before the bulk of the method code 
     private final ProductServices productService;
@@ -39,7 +41,7 @@ public class Product_Controller {
     ProductTable existingProduct = productService.getProductById(id);
 
     if (existingProduct == null) {
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.badRequest().build();
     }
     // Apply the changes from the updatedProduct to the existingProduct
     if (updatedProduct.getName() != null) {

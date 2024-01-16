@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.model.User;
 
-public interface User_Repository extends JpaRepository<User, Long> {
+public interface User_Repository extends JpaRepository<User, Integer> {
 
     List<User> findAll();
 
-    Optional<User> findById(Long id);
+    Optional<User> findById(Integer id);
 
     void delete(User user);
     

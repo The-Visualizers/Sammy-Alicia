@@ -20,7 +20,7 @@ private final User_Repository userRepository;
 // calling the cart table 
 // pass the userid to the function of the initial cart
 
-public String updateUserName(Long id, String newName) {
+public String updateUserName(Integer id, String newName) {
     Optional<User> userOptional = userRepository.findById(id);
     if (userOptional.isPresent()) {
         User user = userOptional.get();
@@ -31,7 +31,7 @@ public String updateUserName(Long id, String newName) {
         return "User not found with ID: " + id;
     }
 }
-public String deleteUser(Long id) {
+public String deleteUser(Integer id) {
     try {
         Optional<User> userOptional = userRepository.findById(id);
         

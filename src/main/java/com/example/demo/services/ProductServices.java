@@ -12,7 +12,7 @@ import com.example.demo.repository.Product_Repository;
 @Service
 public class ProductServices {
     private final Product_Repository productRepository;
-    ProductTable products;
+    
 
     public ProductServices(Product_Repository productRepository) {
         this.productRepository = productRepository;
@@ -81,11 +81,11 @@ public class ProductServices {
     }
 
     public ProductTable updateProduct(ProductTable existingProduct) {
-        return null;
+        return productRepository.save(existingProduct);
     }
 
     public ProductTable getProductById(Long id) {
-        return products;
+        return productRepository.getReferenceById(id);
     }
 
 }
