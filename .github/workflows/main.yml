@@ -1,4 +1,4 @@
-  - name: Prettier Java Action
+  - name: Prettier 
   uses: 'lukasmwerner/prettier_action_java@v1.1.1'
   with:
     # Commit message
