@@ -2,7 +2,6 @@ package com.example.demo.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -18,9 +17,9 @@ public class ProductServices {
         this.productRepository = productRepository;
     }
 
-    public List<ProductTable> searchProducts(Optional<Long> id, String query) {
-        return productRepository.searchProducts(id, query);
-    }
+    // public List<ProductTable> searchProducts(Optional<Integer> id, String query) {
+    //     return productRepository.searchProducts(id, query);
+    // }
 
     public Object findProductByIdOrName(String query, Long id) {
         //putting products into an empty array
@@ -86,6 +85,11 @@ public class ProductServices {
 
     public ProductTable getProductById(Long id) {
         return productRepository.getReferenceById(id);
+    }
+
+    public static Object findCartItems(String query, Integer id_cartItems) {
+        
+        throw new UnsupportedOperationException("Unimplemented method 'findCartItems'");
     }
 
 }

@@ -1,4 +1,5 @@
 package com.example.demo.model;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -21,18 +22,20 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_user;
-   
+
     @Column(unique = true)
     private String email;
-    
-    @Column(nullable=false)
+
+    @Column(nullable = false)
     private String username;
 
     @Column(unique = true)
     private String password;
+
     @Entity
+
     public class Cart {
-    
+
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private int cart;
@@ -40,8 +43,8 @@ public class User {
         private Date CreatedDate;
 
         private int userId;
-        
-        public Cart (Date CreatedDate, int id){
+
+        public Cart(Date CreatedDate, int id) {
             this.CreatedDate = CreatedDate;
             this.userId = id;
         }
@@ -49,11 +52,17 @@ public class User {
         public Date getCreatedDate() {
             return this.CreatedDate;
         }
-        public int getId(){
+
+        public int getId() {
             return this.userId;
+        }
+
+        // Comment out Code
+        public void addProduct(ProductTable product) {
+
+            throw new UnsupportedOperationException("Unimplemented method 'addProduct'");
         }
 
     }
 
-    
 }
