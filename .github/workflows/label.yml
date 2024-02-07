@@ -1,0 +1,30 @@
+# This workflow will triage pull requests and apply a label based on the
+# paths that are modified in the pull request.
+#
+# To use this workflow, you will need to set up a .github/labeler.yml
+# file with configuration.  For more information, see:
+# https://github.com/actions/labeler
+
+name: Labeler
+on: [pull_request_target]
+
+jobs:
+ label:
+  - name: "Controller"
+    paths:
+      - "src\main\java\com\example\demo\model\*.java"
+      
+  - name: "Model"
+    paths:
+      - "src\main\resources\manifest\*.yaml"
+      - ""
+
+    runs-on: gitbash-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+    - uses: actions/labeler@v4
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
